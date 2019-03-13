@@ -1,2 +1,2 @@
 # PNTNT
-this is PNTNT project
+This project is PNTNT
