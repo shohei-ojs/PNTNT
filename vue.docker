@@ -1,0 +1,8 @@
+FROM node:10.15
+
+WORKDIR /PNTNT/frontend
+
+RUN npm install -g npm && \
+    npm install -g @vue/cli
+
+EXPOSE 8080
