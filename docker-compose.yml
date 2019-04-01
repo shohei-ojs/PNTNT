@@ -1,24 +1,20 @@
 version: '3'
 services:
-  go:
-    build:
-      context: .
-      dockerfile: go.docker
+  api:
+    build: ./docker/golang
+    container_name: golnag_api
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/go/src/PNTNT/backend
+      - ./backend:/go/src/pntnt/backend
     stdin_open: true
     tty: true
     command: /bin/bash
-  vue:
-    build:
-      context: .
-      dockerfile: vue.docker
+    
+  db:
+    image: postgres
+    container_name: postgres_db
     ports:
-      - "8080:8080"
+      - "5432:5432"
     volumes:
-      - ./frontend:/PNTNT/frontend
-    stdin_open: true
-    tty: true
-    command: /bin/bash
+      - ./docker/postgres:/docker-entrypoint-initdb.d
