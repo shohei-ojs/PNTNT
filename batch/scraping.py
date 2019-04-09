@@ -2,10 +2,20 @@ from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
+import urllib.request
 
 URL = {
   "au": "https://www.au.com/mobile/product/smartphone/"
 }
+
+def temp():
+  with urllib.request.urlopen(URL["au"]) as respones:
+    html = respones.read()
+  soup = BeautifulSoup(html)
+  print(soup)
+
+if __name__ == '__main__':
+  temp()
 
 
 def simple_get(url):
