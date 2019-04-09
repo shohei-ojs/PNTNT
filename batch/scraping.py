@@ -5,13 +5,17 @@ from bs4 import BeautifulSoup
 import urllib.request
 
 URL = {
-  "au": "https://www.au.com/mobile/product/smartphone/"
+  "au": "https://www.au.com/mobile/product/smartphone/",
+  "mineo": "https://mineo.jp/device/smartphone/"
 }
 
 def temp():
-  with urllib.request.urlopen(URL["au"]) as respones:
+  with urllib.request.urlopen(URL["mineo"]) as respones:
     html = respones.read()
   soup = BeautifulSoup(html)
+  with open("temp/mineo.html", mode='w') as f:
+    f.write(str(soup.find_all(class_="device-detail")))
+
   print(soup)
 
 if __name__ == '__main__':
