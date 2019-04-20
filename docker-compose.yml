@@ -14,6 +14,10 @@ services:
   db:
     image: postgres
     container_name: postgres_db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD: pass
+      
     ports:
       - "5432:5432"
     volumes:

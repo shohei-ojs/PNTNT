@@ -3,23 +3,22 @@ from requests.exceptions import RequestException
 from contextlib import closing
 from bs4 import BeautifulSoup
 import urllib.request
+from career.mineo import Mineo
+from career.line import Line
+
 
 URL = {
-  "au": "https://www.au.com/mobile/product/smartphone/",
-  "mineo": "https://mineo.jp/device/smartphone/"
+  # "au": "https://www.au.com/mobile/product/smartphone/",
+  "mineo": "https://mineo.jp/device/smartphone/huawei-novalite3/",
+  "line": "https://mobile.line.me/device/"
 }
-
-def temp():
-  with urllib.request.urlopen(URL["mineo"]) as respones:
-    html = respones.read()
-  soup = BeautifulSoup(html)
-  with open("temp/mineo.html", mode='w') as f:
-    f.write(str(soup.find_all(class_="device-detail")))
-
-  print(soup)
+ 
 
 if __name__ == '__main__':
-  temp()
+  a = Mineo(URL["mineo"])
+  b = Line(URL["line"])
+  a.Scraping()
+  b.Scraping()
 
 
 def simple_get(url):
